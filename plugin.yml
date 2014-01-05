@@ -1,0 +1,8 @@
+name: PlayerSwap
+main: com.mooo.GuildHub.playerswap
+version: 1.0
+description: >
+ Switches places with another player when :Right-Clicked".
+commands:
+  Swap:
+    description: Swaps (username) with (targetUsername).
