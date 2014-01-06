@@ -1,4 +1,3 @@
-
 //I decided not to add comments this time. Too lazy :P
 
 
@@ -14,6 +13,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,21 +21,22 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class playerswap extends JavaPlugin implements Listener{
 	public final Logger logger = Logger.getLogger("Minecraft");
-	public static playerswap plugin;	
+	public static playerswap plugin;
+	public int version = (int) 1.0;
 	//named our final class, logger, plugin, and implemented our listener.
 	
-  @Override
+  	@Override
 	public void onEnable(){
-		getLogger().info("PlayerSwap is Enabled!");
-		Bukkit.getPluginManager().registerEvents(this, this);
+		getLogger().info("PlayerSwap " + version + " has been enabled!");
+		getLogger().getPluginManager().registerEvents((Listener)this, this);
 	}
 	
 	@Override
 	public void onDisable(){
-		getLogger().info("PlayerSwap is Disabled!");
+		getLogger().info("PlayerSwap " + version + " has been disabled!");
 	}
 	
-	@EventHandler
+	@EventHandler (priority = EventPriority.HIGH)
 	public void onPlayerInteractEntity(PlayerInteractEntityEvent event){
 		if(event.getRightClicked() instanceof Player) {
 			Player interacted = (Player) event.getRightClicked();
